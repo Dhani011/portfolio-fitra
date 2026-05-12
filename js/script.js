@@ -1,30 +1,21 @@
-// Navbar Control
 function hamburg() {
-    const navbar = document.querySelector(".dropdown");
-    navbar.style.transform = "translateY(0px)";
+    document.querySelector(".dropdown").classList.add("open");
 }
 
 function cancel() {
-    const navbar = document.querySelector(".dropdown");
-    navbar.style.transform = "translateY(-500px)";
+    document.querySelector(".dropdown").classList.remove("open");
 }
 
-// Typewriter Effect
-const texts = [
-    "Teleco Engineer",
-    "RF Specialist",
-    "Antenna Designer"
-];
-
+const texts = ["Teleco Engineer", "RF Specialist", "Antenna Designer"];
 let speed = 100;
 const textElements = document.querySelector(".typewriter-text");
 let textIndex = 0;
-let characterIndex = 0;
+let charIndex = 0;
 
 function typeWriter() {
-    if (characterIndex < texts[textIndex].length) {
-        textElements.innerHTML += texts[textIndex].charAt(characterIndex);
-        characterIndex++;
+    if (charIndex < texts[textIndex].length) {
+        textElements.innerHTML += texts[textIndex].charAt(charIndex);
+        charIndex++;
         setTimeout(typeWriter, speed);
     } else {
         setTimeout(eraseText, 2000);
@@ -37,14 +28,9 @@ function eraseText() {
         setTimeout(eraseText, 50);
     } else {
         textIndex = (textIndex + 1) % texts.length;
-        characterIndex = 0;
+        charIndex = 0;
         setTimeout(typeWriter, 500);
     }
 }
 
-
-// Initialize
-window.addEventListener('load', () => {
-    // Delay untuk sinkronisasi dengan animasi AOS (900ms delay)
-    setTimeout(typeWriter, 1200);
-});
+window.onload = () => setTimeout(typeWriter, 1000);
