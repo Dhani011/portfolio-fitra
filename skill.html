@@ -5,43 +5,444 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            background-image: url("./img/background.png");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow-x: hidden;
+            position: relative;
+            background-color: #020205;
+        }
+
+        /* Navigasi Tema Biru */
+        nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(2, 2, 5, 0.85); /* Semi-transparan */
+    backdrop-filter: blur(12px);    /* Efek kaca */
+    border-bottom: 1px solid rgba(0, 162, 255, 0.3); /* Border Biru Tipis */
+    z-index: 1000;
+}
+
+        .nav-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #00a2ff;
+            text-shadow: 0 0 10px rgba(0, 162, 255, 0.7);
+        }
+
+        .hamburg, .cancel {
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            color: white;
+            display: none;
+            font-size: clamp(2.5rem, 0.5rem + 5vw, 3rem);
+        }
+
+        .nav-container .links {
+            display: flex;
+        }
+
+        .nav-container .links a {
+            font-size: 1.2rem;
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 550;
+            transition: 0.3s linear;
+        }
+
+        .nav-container .links a:hover, .nav-container .links .active {
+            color: #00a2ff;
+            border-bottom: 2px solid #00a2ff;
+        }
+
+        .dropdown {
+            z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            transform: translateY(-500px);
+            width: 100%;
+            height: auto;
+            backdrop-filter: blur(8px) brightness(40%);
+            box-shadow: 0 0 20px black;
+            transition: 0.3s ease-in-out;
+        }
+
+        .dropdown .links a {
+            display: flex;
+            color: white;
+            text-decoration: none;
+            padding: 15px 0;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dropdown .links a:hover {
+            background-color: #00a2ff;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            width: 100%;
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .skills-content {
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 3rem;
+            color: white;
+            border: 1px solid rgba(0, 162, 255, 0.2);
+        }
+
+        .skills-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .skills-header h1 {
+            font-size: 2.5rem;
+            color: #00a2ff;
+            text-shadow: 0 0 15px rgba(0, 162, 255, 0.5);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Diubah ke 2 kolom agar seimbang */
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(0, 162, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: 0.3s ease;
+            border: 1px solid rgba(0, 162, 255, 0.1);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0, 162, 255, 0.3);
+            border: 1px solid rgba(0, 162, 255, 0.4);
+        }
+
+        .skill-category h2 {
+            color: #00a2ff;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: #00a2ff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 0.8rem;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-info h3 {
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .skill-info span {
+            color: #00a2ff;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: #00a2ff;
+            box-shadow: 0 0 10px #00a2ff;
+            border-radius: 5px;
+            transition: width 1.5s ease-in-out;
+        }
+
+        @media (max-width: 992px) {
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            nav .logo { position: static; font-size: 1.6rem; }
+            .nav-container .links { display: none; }
+            .hamburg { display: block; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .skills-content { width: 100%; padding: 1.5rem; }
+        }
+        /* Software Mastery Styling */
+.software-mastery {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 162, 255, 0.2);
+    text-align: center;
+}
+
+.software-mastery h2 {
+    color: #00a2ff;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px rgba(0, 162, 255, 0.5);
+}
+
+.software-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.sw-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.sw-item:hover {
+    transform: translateY(-10px);
+}
+
+.sw-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px rgba(0, 162, 255, 0.5));
+    margin-bottom: 0.8rem;
+}
+
+.sw-item span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #e0e0e0;
+}
+
+@media (max-width: 440px) {
+    .software-icons { gap: 1.5rem; }
+    .sw-item img { width: 45px; height: 45px; }
+}
+    </style>
     <title>Skills - Fitra Ramadhani</title>
 </head>
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo" data-aos="zoom-in">Fitra <span>Ramadhani</span></div>
-            <div class="links">
-                <div class="link"><a href="index.html">Home</a></div>
-                <div class="link"><a href="about.html">About</a></div>
-                <div class="link active"><a href="skill.html">Skills</a></div>
-                <div class="link"><a href="contact.html">Contact</a></div>
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+                Fitra <span>Ramadhani</span>
             </div>
-            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
-        </div>
-        <div class="dropdown">
-            <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
             <div class="links">
-                <a href="index.html" onclick="cancel()">Home</a>
-                <a href="about.html" onclick="cancel()">About</a>
-                <a href="skill.html" onclick="cancel()">Skills</a>
-                <a href="contact.html" onclick="cancel()">Contact</a>
+                <div class="link" data-aos="fade-up" data-aos-delay="100"><a href="index.html">Home</a></div>
+                <div class="link" data-aos="fade-up" data-aos-delay="200"><a href="about.html">About</a></div>
+                <div class="link active" data-aos="fade-up" data-aos-delay="300"><a href="skill.html">Skills</a></div>
+                <div class="link" data-aos="fade-up" data-aos-delay="500"><a href="contact.html">Contact</a></div>
+            </div>
+        </div>
+        <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        <div class="dropdown">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skill.html">Skills</a>
+                <a href="service.html">Service</a>
+                <a href="contact.html">Contact</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
             </div>
         </div>
     </nav>
 
-    <section>
-        <div class="main-container">
-            <div class="content" data-aos="fade-up">
-                <h1>Technical <span>Skills</span></h1>
-                <p>Antenna Design, Microwave Engineering, CST Studio Suite, RF Link Budget, Python, & Network Infrastructure.</p>
+    <div class="skills-container">
+        <div class="skills-content">
+            <div class="skills-header" data-aos="fade-down" data-aos-duration="1500">
+                <h1>Technical Expertise</h1>
             </div>
-        </div>
-    </section>
+            <div class="skills-grid">
+                
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-icon"><i class="fas fa-satellite-dish"></i></div>
+                    <h2>RF & Microwave Engineering</h2>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-info"><h3>Simulation & Modeling</h3><span>90%</span></div>
+                            <div class="progress-bar"><div class="progress" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><h3>Measurement & Instrumentation</h3><span>85%</span></div>
+                            <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><h3>Design Passive Component</h3><span>75%</span></div>
+                            <div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
+                        </div>
+                    </div>
+                </div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>AOS.init({ offset: 0, duration: 1500 });</script>
-    <script src="js/script.js"></script>
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-icon"><i class="fas fa-broadcast-tower"></i></div>
+                    <h2>Wireless Communication</h2>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-info"><h3>Drivetest</h3><span>85%</span></div>
+                            <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><h3>RF Planning & Optimization</h3><span>65%</span></div>
+                            <div class="progress-bar"><div class="progress" style="width: 65%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><h3>Network Monitoring (NOC)</h3><span>70%</span></div>
+                            <div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                    <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
+                    <h2>Computer Networks & Data</h2>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-info"><h3>IP Networking & Routing</h3><span>85%</span></div>
+                            <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><h3>Network Survey & Monitoring</h3><span>75%</span></div>
+                            <div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><h3>Optical Planning (GPON/FTTH)</h3><span>70%</span></div>
+                            <div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
+                    <div class="skill-icon"><i class="fas fa-microchip"></i></div>
+                    <h2>Internet of Things (IoT)</h2>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-info"><h3>Embedded Systems (C/C++)</h3><span>85%</span></div>
+                            <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><h3>IoT Protocols & Cloud</h3><span>75%</span></div>
+                            <div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><h3>Sensors & Actuator Control</h3><span>80%</span></div>
+                            <div class="progress-bar"><div class="progress" style="width: 80%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+<div class="software-mastery" data-aos="fade-up" data-aos-duration="1500">
+    <h2>Software Mastery</h2>
+    <div class="software-icons">
+        
+        <div class="sw-item" data-aos="zoom-in" data-aos-delay="100">
+            <img src="img/CST.jpeg" alt="CST Studio Suite">
+            <span>CST Studio</span>
+        </div>
+
+        <div class="sw-item" data-aos="zoom-in" data-aos-delay="200">
+            <img src="img/MATLAB.jpeg" alt="MATLAB">
+            <span>MATLAB</span>
+        </div>
+
+        <div class="sw-item" data-aos="zoom-in" data-aos-delay="300">
+            <img src="img/optisystem.jpg" alt="OptiSystem">
+            <span>OptiSystem</span>
+        </div>
+
+        <div class="sw-item" data-aos="zoom-in" data-aos-delay="400">
+            <img src="img/Cisco.jpeg" alt="Cisco Packet Tracer">
+            <span>Packet Tracer</span>
+        </div>
+
+        <div class="sw-item" data-aos="zoom-in" data-aos-delay="500">
+            <img src="img/Winbox.jpeg" alt="WinBox">
+            <span>WinBox</span>
+        </div>
+
+        <div class="sw-item" data-aos="zoom-in" data-aos-delay="600">
+            <img src="img/TEMS.jpg" alt="TEMS">
+            <span>TEMS</span>
+        </div>
+
+                <div class="sw-item" data-aos="zoom-in" data-aos-delay="600">
+            <img src="img/arduinoide.jpeg" alt="Arduino IDE">
+            <span>Arduino IDE</span>
+        </div>
+
+    </div>
+</div>
+        </div> </div> <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({offset: 0});
+        function hamburg() { document.querySelector(".dropdown").style.transform = "translateY(0px)"; }
+        function cancel() { document.querySelector(".dropdown").style.transform = "translateY(-500px)"; }
+    </script>
 </body>
 </html>
