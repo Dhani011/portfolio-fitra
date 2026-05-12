@@ -1,13 +1,20 @@
 // Navbar Control
 function hamburg() {
-    const navbar = document.querySelector(".dropdown");
-    navbar.style.transform = "translateY(0px)";
+    const dropdown = document.querySelector(".dropdown");
+    dropdown.classList.add("active");
 }
 
 function cancel() {
-    const navbar = document.querySelector(".dropdown");
-    navbar.style.transform = "translateY(-500px)";
+    const dropdown = document.querySelector(".dropdown");
+    dropdown.classList.remove("active");
 }
+
+// Opsional: Tutup menu saat link diklik
+document.querySelectorAll(".dropdown .links a").forEach(link => {
+    link.addEventListener("click", () => {
+        cancel();
+    });
+});
 
 // Typewriter Effect
 const texts = [
