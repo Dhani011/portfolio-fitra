@@ -1,21 +1,30 @@
+// Navbar Control
 function hamburg() {
-    document.querySelector(".dropdown").classList.add("open");
+    const navbar = document.querySelector(".dropdown");
+    navbar.style.transform = "translateY(0px)";
 }
 
 function cancel() {
-    document.querySelector(".dropdown").classList.remove("open");
+    const navbar = document.querySelector(".dropdown");
+    navbar.style.transform = "translateY(-500px)";
 }
 
-const texts = ["Teleco Engineer", "RF Specialist", "Antenna Designer"];
+// Typewriter Effect
+const texts = [
+    "Teleco Engineer",
+    "RF Specialist",
+    "Antenna Designer"
+];
+
 let speed = 100;
 const textElements = document.querySelector(".typewriter-text");
 let textIndex = 0;
-let charIndex = 0;
+let characterIndex = 0;
 
 function typeWriter() {
-    if (charIndex < texts[textIndex].length) {
-        textElements.innerHTML += texts[textIndex].charAt(charIndex);
-        charIndex++;
+    if (characterIndex < texts[textIndex].length) {
+        textElements.innerHTML += texts[textIndex].charAt(characterIndex);
+        characterIndex++;
         setTimeout(typeWriter, speed);
     } else {
         setTimeout(eraseText, 2000);
@@ -28,9 +37,14 @@ function eraseText() {
         setTimeout(eraseText, 50);
     } else {
         textIndex = (textIndex + 1) % texts.length;
-        charIndex = 0;
+        characterIndex = 0;
         setTimeout(typeWriter, 500);
     }
 }
 
-window.onload = () => setTimeout(typeWriter, 1000);
+
+// Initialize
+window.addEventListener('load', () => {
+    // Delay untuk sinkronisasi dengan animasi AOS (900ms delay)
+    setTimeout(typeWriter, 1200);
+});
