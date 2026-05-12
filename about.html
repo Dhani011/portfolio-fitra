@@ -162,13 +162,16 @@ nav {
 
         /* About Section Styles - Tema Biru */
         .about-container {
-            width: 100%;
-            min-height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            position: relative;
+           width: 100%;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Perkecil padding di mobile agar konten punya ruang */
+    padding: 1rem; 
+    position: relative;
+    box-sizing: border-box; /* SANGAT PENTING agar border tidak meluber */
+    overflow-x: hidden;
         }
 
         .about-content {
@@ -224,9 +227,16 @@ nav {
         }
 
         .about-text p {
-            line-height: 1.7;
+            line-height: 1.6;
             margin-bottom: 1.2rem;
             color: #e0e0e0;
+            font-size: 0.9rem; 
+            word-wrap: break-word; 
+            text-justify: inter-character; 
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            letter-spacing: -0.2px; 
+            word-spacing: -1px;
         }
 
         .stats {
@@ -393,7 +403,7 @@ nav {
             <div class="content-card" data-aos="zoom-in" data-aos-delay="100">
                 <h3 style="color: #00a2ff;"><i class="fas fa-satellite-dish"></i> Wearable Radar Antenna</h3>
                 <p style="font-size: 0.9rem; margin-top: 5px; color: #aaa;">Apr 2025 - Mar 2026</p>
-                <p style="text-align: justify; margin-top: 10px;">
+                <p style="text-align: justify; margin-top: 10px; line-height: 1.6; margin-bottom: 1.2rem; color: #e0e0e0; font-size: 0.9rem; word-wrap: break-word; text-justify: inter-character; hyphens: auto; -webkit-hyphens: auto; letter-spacing: -0.2px; word-spacing: -1px;">
                     Designed and fabricated a 2.4/5.8 GHz textile-based microstrip antenna for biomedical Doppler Radar. 
                     Optimized RF parameters (S11, Gain, Radiation Pattern) using <strong>CST Studio Suite</strong> and signal processing with MATLAB.
                 </p>
@@ -403,7 +413,7 @@ nav {
             <div class="content-card" data-aos="zoom-in" data-aos-delay="200">
                 <h3 style="color: #00a2ff;"><i class="fas fa-seedling"></i> IoT Automated Irrigation</h3>
                 <p style="font-size: 0.9rem; margin-top: 5px; color: #aaa;">Feb 2025 - Jan 2026</p>
-                <p style="text-align: justify; margin-top: 10px;">
+                <p style="text-align: justify; margin-top: 10px; line-height: 1.6; margin-bottom: 1.2rem; color: #e0e0e0; font-size: 0.9rem; word-wrap: break-word; text-justify: inter-character; hyphens: auto; -webkit-hyphens: auto; letter-spacing: -0.2px; word-spacing: -1px;">
                     Developed an end-to-end smart system using <strong>ESP32</strong> and C++ for real-time environmental monitoring. 
                     Integrated cloud transmission via TCP/IP to Blynk platform. Project officially registered for Intellectual Property Rights (HAKI).
                 </p>
@@ -413,7 +423,7 @@ nav {
             <div class="content-card" data-aos="zoom-in" data-aos-delay="300">
                 <h3 style="color: #00a2ff;"><i class="fas fa-satellite"></i> Waveguide for Satellite</h3>
                 <p style="font-size: 0.9rem; margin-top: 5px; color: #aaa;">Aug 2024 - Nov 2024</p>
-                <p style="text-align: justify; margin-top: 10px;">
+                <p style="text-align: justify; margin-top: 10px; line-height: 1.6; margin-bottom: 1.2rem; color: #e0e0e0; font-size: 0.9rem; word-wrap: break-word; text-justify: inter-character; hyphens: auto; -webkit-hyphens: auto; letter-spacing: -0.2px; word-spacing: -1px;">
                     Technical design and optimization of a <strong>Rectangular Waveguide (8-14 GHz)</strong> for satellite downlink. 
                     Focused on integrating feed horns to maximize power distribution efficiency and radiation precision.
                 </p>
@@ -423,7 +433,7 @@ nav {
             <div class="content-card" data-aos="zoom-in" data-aos-delay="400">
                 <h3 style="color: #00a2ff;"><i class="fas fa-plane"></i> Triangular Array for UAV</h3>
                 <p style="font-size: 0.9rem; margin-top: 5px; color: #aaa;">Aug 2024 - Dec 2024</p>
-                <p style="text-align: justify; margin-top: 10px;">
+                <p style="text-align: justify; margin-top: 10px; line-height: 1.6; margin-bottom: 1.2rem; color: #e0e0e0; font-size: 0.9rem; word-wrap: break-word; text-justify: inter-character; hyphens: auto; -webkit-hyphens: auto; letter-spacing: -0.2px; word-spacing: -1px;">
                     Designed a 1.09 GHz 1x2 Triangular Microstrip Array Antenna for UAV downlink. 
                     Achieved a compact and lightweight design suitable for stable high-altitude data communication systems.
                 </p>
@@ -433,7 +443,7 @@ nav {
             <div class="content-card" data-aos="zoom-in" data-aos-delay="500">
                 <h3 style="color: #00a2ff;"><i class="fas fa-network-wired"></i> FTTH GPON Analysis</h3>
                 <p style="font-size: 0.9rem; margin-top: 5px; color: #aaa;">Apr 2025 - Jul 2025</p>
-                <p style="text-align: justify; margin-top: 10px;">
+                <p style="text-align: justify; margin-top: 10px; line-height: 1.6; margin-bottom: 1.2rem; color: #e0e0e0; font-size: 0.9rem; word-wrap: break-word; text-justify: inter-character; hyphens: auto; -webkit-hyphens: auto; letter-spacing: -0.2px; word-spacing: -1px;">
                     Technical feasibility study and broadband network design using <strong>GPON technology</strong>. 
                     Validated network quality and performance standards using <strong>OptiSystem</strong> simulations for residential areas.
                 </p>
@@ -457,7 +467,7 @@ function showExperience() {
                 <h3 style="color: #00a2ff;"><i class="fas fa-plane-departure"></i> Assistant Engineer Intern</h3>
                 <h4 style="color: #fff; margin-top: 5px;">AirNav Indonesia - MATSC Branch</h4>
                 <p style="font-size: 0.8rem; color: #888;">Dec 2024 - Feb 2025 | Part-Time</p>
-                <p style="text-align: justify; margin-top: 10px; font-size: 0.95rem;">
+                <p style="text-align: justify; margin-top: 10px; line-height: 1.6; margin-bottom: 1.2rem; color: #e0e0e0; font-size: 0.9rem; word-wrap: break-word; text-justify: inter-character; hyphens: auto; -webkit-hyphens: auto; letter-spacing: -0.2px; word-spacing: -1px;">
                     Contributed to the maintenance and optimization of aviation technical infrastructure, including navigation systems 
                     (VOR, DME, ILS), ATC automation, and telecommunication networks. Responsibilities included performance monitoring, 
                     system troubleshooting, and testing radio and antenna equipment to ensure compliance with aviation safety and 
@@ -469,7 +479,7 @@ function showExperience() {
                 <h3 style="color: #00a2ff;"><i class="fas fa-network-wired"></i> Assistant Engineer</h3>
                 <h4 style="color: #fff; margin-top: 5px;">PT Trans Nasional Teknologi</h4>
                 <p style="font-size: 0.8rem; color: #888;">Jun 2021 - Oct 2021 | Part-Time</p>
-                <p style="text-align: justify; margin-top: 10px; font-size: 0.95rem;">
+                <p style="text-align: justify; margin-top: 10px; line-height: 1.6; margin-bottom: 1.2rem; color: #e0e0e0; font-size: 0.9rem; word-wrap: break-word; text-justify: inter-character; hyphens: auto; -webkit-hyphens: auto; letter-spacing: -0.2px; word-spacing: -1px;">
                     Engaged in network infrastructure processing and maintenance, covering Fiber Optic installation, wireless network 
                     setup, and configuration of <strong>Cisco & MikroTik</strong> devices. Managed connectivity stability, 
                     conducted site surveys for expansion planning, and developed technical documentation including network 

@@ -13,7 +13,7 @@
             padding: 0;
             margin: 0;
             font-family: "Poppins", sans-serif;
-            box-sizing: border-box;
+            box-sizing: border-box; /* Sangat penting agar padding tidak merusak lebar */
         }
 
         body {
@@ -30,131 +30,126 @@
 
         /* Navigasi Sticky & Berwarna */
         nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 80px; /* Tinggi tetap agar layout stabil */
-    background: rgba(2, 2, 5, 0.9); 
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(0, 162, 255, 0.2);
-    z-index: 2000; /* Z-index tinggi agar selalu di atas */
-    display: flex;
-    align-items: center;
-}
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            background: rgba(2, 2, 5, 0.9);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0, 162, 255, 0.2);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+        }
 
-.nav-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between; /* Lebih rapi untuk mobile */
-    align-items: center;
-    padding: 0 5%;
-}
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+        }
 
-.logo {
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    cursor: default;
-}
+        .logo {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: default;
+        }
 
-.logo span {
-    color: #00a2ff;
-    text-shadow: 0 0 15px rgba(0, 162, 255, 0.8);
-}
+        .logo span {
+            color: #00a2ff;
+            text-shadow: 0 0 15px rgba(0, 162, 255, 0.8);
+        }
 
-/* --- Menu Desktop --- */
-.nav-container .links {
-    display: flex;
-    align-items: center;
-}
+        .nav-container .links {
+            display: flex;
+            align-items: center;
+        }
 
-.nav-container .links a {
-    font-size: 1.1rem;
-    color: white;
-    margin-left: 40px;
-    text-decoration: none;
-    font-weight: 550;
-    transition: 0.3s ease;
-    position: relative;
-}
+        .nav-container .links a {
+            font-size: 1.1rem;
+            color: white;
+            margin-left: 40px;
+            text-decoration: none;
+            font-weight: 550;
+            transition: 0.3s ease;
+            position: relative;
+        }
 
-.nav-container .links a:hover,
-.nav-container .links .active a {
-    color: #00a2ff;
-}
+        .nav-container .links a:hover,
+        .nav-container .links .active a {
+            color: #00a2ff;
+        }
 
-/* --- Hamburger & Cancel Icons --- */
-.hamburg, .cancel {
-    cursor: pointer;
-    color: white;
-    font-size: 2.5rem;
-    display: none; /* Sembunyi di desktop */
-    transition: 0.3s;
-}
+        .hamburg,
+        .cancel {
+            cursor: pointer;
+            color: white;
+            font-size: 2.5rem;
+            display: none;
+            transition: 0.3s;
+        }
 
-/* --- Mobile Dropdown Overlay --- */
-.dropdown {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh; /* Full screen di mobile */
-    background: rgba(2, 2, 5, 0.98);
-    backdrop-filter: blur(15px);
-    z-index: 3000; /* Di atas segalanya */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: translateY(-100%); /* Sembunyi di atas layar */
-    transition: 0.5s cubic-bezier(0.6, 0.05, 0.01, 0.9);
-}
+        .dropdown {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(2, 2, 5, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(-100%);
+            transition: 0.5s cubic-bezier(0.6, 0.05, 0.01, 0.9);
+        }
 
-/* Class ini akan dipicu oleh JS (dropdown.classList.add('active')) */
-.dropdown.active {
-    transform: translateY(0);
-}
+        .dropdown.active {
+            transform: translateY(0);
+        }
 
-.dropdown .links {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    text-align: center;
-}
+        .dropdown .links {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            text-align: center;
+        }
 
-.dropdown .links a {
-    color: white;
-    text-decoration: none;
-    font-size: 2rem;
-    font-weight: 600;
-    transition: 0.3s;
-}
+        .dropdown .links a {
+            color: white;
+            text-decoration: none;
+            font-size: 2rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
 
-.dropdown .links a:hover {
-    color: #00a2ff;
-    transform: scale(1.1);
-}
+        .dropdown .links a:hover {
+            color: #00a2ff;
+            transform: scale(1.1);
+        }
 
-/* Tombol X di dalam dropdown */
-.dropdown .cancel {
-    display: block;
-    position: absolute;
-    top: 20px;
-    right: 30px;
-}
+        .dropdown .cancel {
+            display: block;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
 
-/* --- Responsive Media Query --- */
-@media (max-width: 884px) {
-    .nav-container .links {
-        display: none; /* Sembunyikan menu desktop */
-    }
+        @media (max-width: 884px) {
+            .nav-container .links {
+                display: none;
+            }
 
-    .hamburg {
-        display: block; /* Munculkan tombol hamburger */
-    }
-}
+            .hamburg {
+                display: block;
+            }
+        }
 
         /* Contact Section Styles */
         .contact-container {
@@ -163,12 +158,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 12vh 2rem 2rem; /* padding-top disesuaikan dengan tinggi nav */
+            padding: 100px 1rem 50px; /* Diubah: Menggunakan padding atas tetap (80px nav + 20px buffer) */
         }
 
         .contact-content {
-            width: 90%;
+            width: 100%;
             max-width: 1100px;
+            height: auto; /* Mengikuti besar isi */
             background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(15px);
             border-radius: 20px;
@@ -178,7 +174,14 @@
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
             border: 1px solid rgba(0, 162, 255, 0.2);
+            overflow: hidden; /* Mencegah elemen dalam keluar dari border */
         }
+
+        .contact-info p {
+        text-align: left !important; /* Ubah dari justify ke left khusus mobile */
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
 
         .contact-header h1 {
             font-size: 2.8rem;
@@ -223,7 +226,12 @@
 
         .contact-text p {
             color: #ffffff;
-            font-size: 0.95rem;
+            font-size: 0.85rem !important; /* Mengecilkan sedikit agar muat dalam satu baris */
+            word-wrap: break-word;
+            word-break: break-all; /* Mencegah pemotongan huruf di tengah */
+            overflow-wrap: break-word; /* Memastikan teks patah hanya jika benar-benar mentok */
+            line-height: 1.4;
+            text-align: left;
         }
 
         /* Form Styling */
@@ -231,10 +239,12 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
+            width: 100%;
         }
 
         .form-group {
             position: relative;
+            width: 100%;
         }
 
         .form-group input,
@@ -284,6 +294,7 @@
         }
 
         .submit-btn {
+            width: 100%;
             padding: 1.2rem;
             background: #00a2ff;
             border: none;
@@ -305,6 +316,7 @@
             margin-top: 2.5rem;
             display: flex;
             gap: 1.2rem;
+            flex-wrap: wrap; /* Agar tidak meluber jika layar sangat kecil */
         }
 
         .social-links a {
@@ -329,9 +341,23 @@
         }
 
         @media (max-width: 992px) {
-            .contact-content { grid-template-columns: 1fr; width: 95%; padding: 2rem; }
-            .nav-container .links { display: none; }
-            .hamburg { display: block; }
+            .contact-content {
+                grid-template-columns: 1fr; /* Jadi satu kolom bertumpuk di HP */
+                width: 95%;
+                padding: 2rem 1.5rem; /* Padding lebih kecil agar teks luas */
+                gap: 2rem;
+            }
+
+            .contact-header h1 {
+                font-size: 2.8rem !important; /* Perkecil sedikit dari 2.8rem */
+                line-height: 1.2;
+                text-align: left;
+            }
+
+            .contact-container {
+                padding-top: 100px;
+                align-items: flex-start; /* Agar kontainer mulai dari atas (scrollable) */
+            }
         }
     </style>
     <title>Contact - Fitra Ramadhani</title>
@@ -339,53 +365,36 @@
 
 <body>
     <nav>
-    <div class="nav-container">
-        <!-- Logo -->
-        <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
-            Fitra <span>Ramadhani</span>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+                Fitra <span>Ramadhani</span>
+            </div>
+            <div class="links">
+                <div class="link"><a href="index.html">Home</a></div>
+                <div class="link"><a href="about.html">About</a></div>
+                <div class="link"><a href="skill.html">Skills</a></div>
+                <div class="link active"><a href="contact.html">Contact</a></div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
         </div>
-
-        <!-- Links Desktop -->
-        <div class="links">
-            <!-- Pindahkan class 'active' ke elemen <a> atau div sesuai kebutuhan CSS Anda -->
-            <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
-                <a href="index.html">Home</a>
-            </div>
-            <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
-                <a href="about.html">About</a>
-            </div>
-            <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
-                <a href="skill.html">Skills</a>
-            </div>
-            <div class="link active" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
-                <a href="contact.html">Contact</a>
+        <div class="dropdown">
+            <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            <div class="links">
+                <a href="index.html" onclick="cancel()">Home</a>
+                <a href="about.html" onclick="cancel()">About</a>
+                <a href="skill.html" onclick="cancel()">Skills</a>
+                <a href="contact.html" onclick="cancel()">Contact</a>
             </div>
         </div>
-
-        <!-- Hamburger Icon (Hanya muncul di Mobile) -->
-        <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
-    </div>
-
-    <!-- Mobile Dropdown Menu -->
-    <div class="dropdown">
-        <!-- Tombol Close di dalam Dropdown -->
-        <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
-        
-        <div class="links">
-            <a href="index.html" onclick="cancel()">Home</a>
-            <a href="about.html" onclick="cancel()">About</a>
-            <a href="skill.html" onclick="cancel()">Skills</a>
-            <a href="contact.html" onclick="cancel()">Contact</a>
-        </div>
-    </div>
-</nav>
+    </nav>
 
     <div class="contact-container">
         <div class="contact-content">
             <div class="contact-info">
                 <div class="contact-header" data-aos="fade-right" data-aos-duration="1500">
                     <h1>Connect with Me</h1>
-                    <p>I am always open to discussing new projects, creative ideas, or opportunities in the telecommunications industry.</p>
+                    <p style="text-align: justify;">I am always open to discussing new projects, creative ideas, or
+                        opportunities in the telecommunications industry.</p>
                 </div>
 
                 <div class="contact-details">
@@ -406,67 +415,63 @@
                     </div>
                 </div>
 
-                <!-- Perbaikan Link Sosmed di contact.html agar konsisten dengan index -->
-<div class="social-links" data-aos="fade-up" data-aos-delay="600">
-    <a href="https://www.linkedin.com/in/fitra-ramadhani-09b563242" target="_blank">
-        <i class="fa-brands fa-linkedin"></i>
-    </a>
-    <a href="mailto:fitra30ramadhani@gmail.com">
-        <i class="fa-solid fa-envelope"></i>
-    </a>
-    <a href="https://wa.me/62895802837001" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-    <a href="https://www.instagram.com/dhnn.n" target="_blank">
-        <i class="fa-brands fa-instagram"></i>
-    </a>
-</div>
+                <div class="social-links" data-aos="fade-up" data-aos-delay="600">
+                    <a href="https://www.linkedin.com/in/fitra-ramadhani-09b563242" target="_blank">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:fitra30ramadhani@gmail.com">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                    <a href="https://wa.me/62895802837001" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com/dhnn.n" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
             </div>
 
             <div class="contact-form" data-aos="fade-left" data-aos-duration="1500">
-            <form action="https://formspree.io/f/xojrryvw" method="POST">
-                <input type="text" name="_gotcha" style="display:none" />
+                <form action="https://formspree.io/f/xojrryvw" method="POST">
+                    <input type="text" name="_gotcha" style="display:none" />
 
-            <div class="form-group">
-                <input type="text" id="name" name="name" required>
-                <label for="name">Your Name</label>
-                </div>
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
 
-            <div class="form-group">
-                <input type="email" id="email" name="_replyto" required>
-                <label for="email">Your Email</label>
-            </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="_replyto" required>
+                        <label for="email">Your Email</label>
+                    </div>
 
-            <div class="form-group">
-                <input type="text" id="subject" name="subject" required>
-                <label for="subject">Inquiry Subject</label>
-            </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" required>
+                        <label for="subject">Inquiry Subject</label>
+                    </div>
 
-            <div class="form-group">
-                <textarea id="message" name="message" required></textarea>
-                <label for="message">Detailed Message</label>
-            </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" required></textarea>
+                        <label for="message">Detailed Message</label>
+                    </div>
 
-            <button type="submit" class="submit-btn">Send Inquiry</button>
-            </form>
-
+                    <button type="submit" class="submit-btn">Send Inquiry</button>
+                </form>
             </div>
         </div>
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ offset: 0, });
-        // Tambahkan fungsi hamburg & cancel di sini atau di script.js Anda
-        function hamburg() { document.querySelector(".dropdown").style.transform = "translateY(0px)"; }
-        function cancel() { document.querySelector(".dropdown").style.transform = "translateY(-500px)"; }
+        AOS.init({ offset: 0 });
         function hamburg() {
-        const dropdown = document.querySelector(".dropdown");
-        dropdown.classList.add("active");}
+            document.querySelector(".dropdown").classList.add("active");
+        }
         function cancel() {
-        const dropdown = document.querySelector(".dropdown");
-        dropdown.classList.remove("active");}
+            document.querySelector(".dropdown").classList.remove("active");
+        }
     </script>
     <script src="./js/script.js"></script>
 </body>
+
 </html>
