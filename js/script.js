@@ -1,50 +1,41 @@
-// Navbar Control
+// Navigasi Mobile
 function hamburg() {
-    const navbar = document.querySelector(".dropdown");
-    navbar.style.transform = "translateY(0px)";
+    document.querySelector(".dropdown").classList.add("active");
 }
 
 function cancel() {
-    const navbar = document.querySelector(".dropdown");
-    navbar.style.transform = "translateY(-500px)";
+    document.querySelector(".dropdown").classList.remove("active");
 }
 
-// Typewriter Effect
-const texts = [
-    "Teleco Engineer",
-    "RF Specialist",
-    "Antenna Designer"
-];
+// Typewriter Effect (Hanya jalan jika elemen ada)
+const textElement = document.querySelector(".typewriter-text");
+if (textElement) {
+    const texts = ["Teleco Engineer", "RF Specialist", "Antenna Designer"];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
-let speed = 100;
-const textElements = document.querySelector(".typewriter-text");
-let textIndex = 0;
-let characterIndex = 0;
+    function type() {
+        const currentText = texts[textIndex];
+        if (isDeleting) {
+            textElement.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            textElement.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+        }
 
-function typeWriter() {
-    if (characterIndex < texts[textIndex].length) {
-        textElements.innerHTML += texts[textIndex].charAt(characterIndex);
-        characterIndex++;
-        setTimeout(typeWriter, speed);
-    } else {
-        setTimeout(eraseText, 2000);
+        let typeSpeed = isDeleting ? 50 : 100;
+        if (!isDeleting && charIndex === currentText.length) {
+            typeSpeed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            typeSpeed = 500;
+        }
+        setTimeout(type, typeSpeed);
     }
+    
+    window.addEventListener('load', () => setTimeout(type, 1200));
 }
-
-function eraseText() {
-    if (textElements.innerHTML.length > 0) {
-        textElements.innerHTML = textElements.innerHTML.slice(0, -1);
-        setTimeout(eraseText, 50);
-    } else {
-        textIndex = (textIndex + 1) % texts.length;
-        characterIndex = 0;
-        setTimeout(typeWriter, 500);
-    }
-}
-
-
-// Initialize
-window.addEventListener('load', () => {
-    // Delay untuk sinkronisasi dengan animasi AOS (900ms delay)
-    setTimeout(typeWriter, 1200);
-});
